@@ -1,0 +1,11 @@
+export const LOAD_USERS_START = 'LOAD_USERS_START'
+export const LOAD_USERS_SUCCESS = 'LOAD_USERS_SUCCESS'
+
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+
+export const NEW_POLL_START = 'NEW_POLL_START'
+export const NEW_POLL_SUCCESS = 'NEW_POLL_SUCCESS'
+
+export const LOAD_POLL_START = 'LOAD_POLL_START'
+export const LOAD_POLL_SUCCESS = 'LOAD_POLL_SUCCESS'
