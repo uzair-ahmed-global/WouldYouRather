@@ -14,10 +14,16 @@ const reducer = (state = initialState, action) => {
                 loading: true
             }
         case actionTypes.LOAD_USERS_SUCCESS:
+            const newUsers = deepCopyObject(action.users)
+            let updatedCurrentUser = null
+            if (state.currentUser) {
+                updatedCurrentUser = deepCopyObject(newUsers[state.currentUser.id])
+            }
             return {
                 ...state,
                 loading: false,
-                users: deepCopyObject(action.users)
+                users: newUsers,
+                currentUser: updatedCurrentUser
             }
         case actionTypes.LOGIN:
             return {
@@ -25,7 +31,6 @@ const reducer = (state = initialState, action) => {
                 currentUser: deepCopyObject(state.users[action.userID])
             }
         case actionTypes.LOGOUT:
-            console.log('REDUCER: ', 'we here');
             return {
                 ...state,
                 currentUser: null

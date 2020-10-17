@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
 import Spinner from '../../components/UI/spinner/spinner'
 
 import * as actions from '../../store/actions/index'
 
-class auth extends Component {
+class Auth extends Component {
     state = {
         selectedUserID: null
     }
@@ -12,7 +13,7 @@ class auth extends Component {
     componentDidMount() {
         this.props.loadUsers()
         if (this.props.currentUser) {
-            this.setState({selectedUserID: this.props.currentUser.id})
+            this.setState({ selectedUserID: this.props.currentUser.id })
         }
     }
 
@@ -21,7 +22,7 @@ class auth extends Component {
         if (!this.state.selectedUserID) {
             return
         }
-        this.props.performLogin(this.state.selectedUserID)
+        this.props.performLogin(this.state.selectedUserID, this.postLoginRedirect)
     }
 
     userChangedHandler = (event) => {
@@ -29,6 +30,10 @@ class auth extends Component {
             ...this.state,
             selectedUserID: event.target.value
         })
+    }
+
+    postLoginRedirect = () => {
+        this.props.history.push('/')
     }
 
     render() {
@@ -79,7 +84,7 @@ class auth extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         loadUsers: () => dispatch(actions.loadUsers()),
-        performLogin: (userID) => dispatch(actions.login(userID))
+        performLogin: (userID, postRedirect) => dispatch(actions.login(userID, postRedirect))
     }
 }
 
@@ -91,4 +96,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(auth);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth))

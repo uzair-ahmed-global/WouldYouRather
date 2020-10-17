@@ -48,3 +48,29 @@ export const loadPolls = () => {
         })
     }
 }
+
+const answerPollStart = () => {
+    return {
+        type: actionTypes.ANS_POLL_START,
+    }
+}
+
+const answerPollSuccess = () => {
+    return {
+        type: actionTypes.ANS_POLL_SUCCESS
+    }
+}
+
+export const answerPoll = (userID, questionID, answer, postSubmitRedirect) => {
+    return dispatch => {
+        dispatch(answerPollStart())
+        console.log(userID, questionID, answer);
+        API._saveQuestionAnswer({authedUser: userID, qid: questionID, answer: answer})
+        .then((res, err) => {
+            dispatch(answerPollSuccess())
+            dispatch(actions.loadPolls())
+            dispatch(actions.loadUsers())
+            postSubmitRedirect()
+        })
+    }
+}

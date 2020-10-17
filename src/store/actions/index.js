@@ -6,5 +6,6 @@ export {
 
 export {
     savePoll,
-    loadPolls
+    loadPolls,
+    answerPoll
 } from './poll'

@@ -5,6 +5,7 @@ import { BrowserRouter, Redirect, Route } from 'react-router-dom'
 import Navbar from './components/UI/navbar/Navbar';
 import Auth from './containers/auth/auth'
 import Home from './containers/home/home';
+import PollDetail from './containers/home/pollDetail/pollDetail';
 import Leaderboard from './containers/leaderboard/leaderboard';
 import NewPoll from './containers/newPoll/newPoll';
 
@@ -16,6 +17,7 @@ const App = props => {
         <Route path='/leaderboard' exact component={Leaderboard} />
         <Route path='/new' exact component={NewPoll} />
         <Route path='/' exact component={Home} />
+        <Route path='/questions/:id' component={PollDetail} />
       </div>
     )
   }

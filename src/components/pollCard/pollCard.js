@@ -1,4 +1,5 @@
 import React from 'react'
+import NavItem from '../UI/navitem/NavItem'
 
 const PollCard = (props) => {
     return (
@@ -14,6 +15,7 @@ const PollCard = (props) => {
                             <p className="card-text">{props.option1}</p>
                             <p className="card-text font-weight-bold text-center">OR</p>
                             <p className="card-text">{props.option2}</p>
+                            <button onClick={props.questionDetailHandler}>View detail</button>
                         </div>
                     </div>
                 </div>

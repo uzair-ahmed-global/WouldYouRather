@@ -24,7 +24,8 @@ export const loadUsers = () => {
     }
 }
 
-export const login = (userID) => {
+export const login = (userID, postRedirect) => {
+    postRedirect()
     return {
         type: actionTypes.LOGIN,
         userID: userID
@@ -32,7 +33,6 @@ export const login = (userID) => {
 }
 
 export const logout = () => {
-    console.log('ACTION CREATOR')
     return {
         type: actionTypes.LOGOUT,
     }
