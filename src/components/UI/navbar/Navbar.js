@@ -8,7 +8,6 @@ import * as actions from '../../../store/actions'
 class Navbar extends Component {
 
     logouthandler = event => {
-        console.log('helo');
         this.props.onLogout()
     }
 
@@ -26,9 +25,9 @@ class Navbar extends Component {
                     </div>
                 </div>
             )
-            guardedPaths = ['Leaderboard', 'New'].map(path => {
+            guardedPaths = ['leaderboard', 'add'].map(path => {
                 return (
-                    <div className="navbar-nav" style={{ margin: '0px 20px' }}>
+                    <div className="navbar-nav" style={{ margin: '0px 20px' }} key={path}>
                         <NavItem path={'/' + path}>{path}</NavItem>
                     </div>
                 )

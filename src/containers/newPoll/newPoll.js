@@ -30,7 +30,11 @@ export class NewPoll extends Component {
             optionOneText: this.state.option1,
             optionTwoText: this.state.option2
         }
-        this.props.onSubmitPoll(question)
+        this.props.onSubmitPoll(question, this.postRedirect)
+    }
+
+    postRedirect = () => {
+        this.props.history.push('/')
     }
 
     render() {
@@ -61,7 +65,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSubmitPoll: (poll) => dispatch(actions.savePoll(poll))
+        onSubmitPoll: (poll, postRedirect) => dispatch(actions.savePoll(poll, postRedirect))
     }
 }
 

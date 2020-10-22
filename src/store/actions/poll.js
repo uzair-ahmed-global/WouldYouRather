@@ -14,7 +14,7 @@ const savePollSuccess = () => {
     }
 }
 
-export const savePoll = (question) => {
+export const savePoll = (question, postRedirect) => {
     return dispatch => {
         dispatch(savePollStart())
         API._saveQuestion(question)
@@ -22,6 +22,7 @@ export const savePoll = (question) => {
             dispatch(savePollSuccess())
             dispatch(loadPolls())
             dispatch(actions.loadUsers())
+            postRedirect()
         })
     }
 }

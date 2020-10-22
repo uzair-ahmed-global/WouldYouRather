@@ -12,6 +12,7 @@ class Auth extends Component {
 
     componentDidMount() {
         this.props.loadUsers()
+        this.props.loadPolls()
         if (this.props.currentUser) {
             this.setState({ selectedUserID: this.props.currentUser.id })
         }
@@ -33,7 +34,12 @@ class Auth extends Component {
     }
 
     postLoginRedirect = () => {
-        this.props.history.push('/')
+        console.log(this.props.location.redirect)
+        if (this.props.location.redirect) {
+            this.props.history.push(this.props.location.redirect)
+        } else {
+            this.props.history.push('/')
+        }
     }
 
     render() {
@@ -84,7 +90,8 @@ class Auth extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         loadUsers: () => dispatch(actions.loadUsers()),
-        performLogin: (userID, postRedirect) => dispatch(actions.login(userID, postRedirect))
+        performLogin: (userID, postRedirect) => dispatch(actions.login(userID, postRedirect)),
+        loadPolls: () => dispatch(actions.loadPolls())
     }
 }
 

@@ -20,7 +20,7 @@ class UnansweredPoll extends Component {
     }
 
     postSubmitRedirect = () => {
-        this.props.history.push('/')
+        this.props.history.push('/questions/' + this.props.qID)
     }
 
     submitPollHandler = event => {
@@ -49,13 +49,13 @@ class UnansweredPoll extends Component {
                                         onChange={this.optionChangedHandler}>
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="optionOne" />
-                                            <label className="form-check-label" for="exampleRadios1">
+                                            <label className="form-check-label" htmlFor="exampleRadios1">
                                                 {this.props.option1}
                                             </label>
                                         </div>
                                         <div className="form-check">
                                             <input className="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="optionTwo" />
-                                            <label className="form-check-label" for="exampleRadios2">
+                                            <label className="form-check-label" htmlFor="exampleRadios2">
                                                 {this.props.option2}
                                             </label>
                                         </div>
